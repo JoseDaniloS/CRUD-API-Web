@@ -8,16 +8,33 @@ import { deleteNewsbyTitle } from "../API/APIFunctions";
 import { editNewsbyTitle } from "../API/APIFunctions";
 
 import InputNoticeComponent from "./inputNoticeComponent";
+import { toast } from "react-toastify";
 
 function NoticeComponent({ item }) {
+  
+  
   const [itemEdit, setItemEdit] = useState(item);
 
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setItemEdit({ ...itemEdit, [name]: value });
   };
 
   const saveEdit = async () => {
+    //Verifica se o campo de descrição foi alterado
+    if (
+      itemEdit.description === item.description || !itemEdit.description) {
+      toast.error("Campo de descrição não pode ser vazio ou igual ao anterior");
+      return;
+    }
+
+    //Verifica se o campo de conteudo foi alterado
+    if (itemEdit.content === item.content || !itemEdit.content) {
+      toast.error("Campo de conteudo não pode ser vazio ou igual ao anterior");
+      return;
+    }
+
     await editNewsbyTitle(
       itemEdit.title,
       itemEdit.description,
