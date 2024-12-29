@@ -1,7 +1,7 @@
 import axios from "axios";
 import {toast } from "react-toastify";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://crud-api3.onrender.com";
 
 
 // Function to get all news
