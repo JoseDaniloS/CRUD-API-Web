@@ -64,13 +64,11 @@ function App() {
 
         {/* Lista de noticias */}
         <div className="flex flex-wrap gap-3">
-          {news.length > 0 ? (
-            news.map((item, index) => (
-              <NoticeComponent key={index} item={item} />
-            ))
-          ) : (
-            <EmptyNotice />
-          )}
+          {news.length > 0
+            ? news.map((item, index) =>
+                <NoticeComponent key={index} item={item} />
+              )
+            : <EmptyNotice />}
         </div>
       </div>
     </div>
